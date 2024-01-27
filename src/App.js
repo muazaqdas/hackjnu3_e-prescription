@@ -2,9 +2,10 @@ import {lazy, Suspense} from 'react'
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes,useLocation } from 'react-router-dom';
 import Error404 from './Error404';
-import Home from './Home';
 
 const Layout = lazy( () => import('./components/Layout'));
+const Login = lazy( () => import('./Login'));
+const Loading = lazy( () => import('./components/Loading'));
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -21,13 +22,11 @@ function App() {
 
       <BrowserRouter>
       <ScrollToTop/>
-        <Suspense fallback={<div>
-          ....loading
-          {/* Will create a fallback loading page and import here */}
-        </div>}>
+        <Suspense fallback={<Loading/>}>
           <Routes>
             <Route path='/' element={<Layout/>}>
-              <Route index element={<Home/>}/>
+              <Route index element={<Login/>}/>
+              <Route path='/login' element={<Login/>} />
               <Route path="404" element={ <Error404/>} />
             </Route>
             <Route path="*" element={ <Navigate to="/404" replace />} />
