@@ -6,6 +6,7 @@ import Error404 from './Error404';
 const Layout = lazy( () => import('./components/Layout'));
 const Login = lazy( () => import('./Login'));
 const Loading = lazy( () => import('./components/Loading'));
+const Signup = lazy( () => import('./Signup'));
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
             <Route path='/' element={<Layout/>}>
               <Route index element={<Login/>}/>
               <Route path='/login' element={<Login/>} />
+              <Route path='/signup' element={<Signup/>} />
               <Route path="404" element={ <Error404/>} />
             </Route>
             <Route path="*" element={ <Navigate to="/404" replace />} />

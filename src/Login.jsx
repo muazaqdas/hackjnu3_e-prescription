@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link,useNavigate } from 'react-router-dom'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import {app} from './firebase/firebase'
+
+const auth = getAuth(app);
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const loginUser = (e)=>{
+      e.preventDefault();
+        signInWithEmailAndPassword(
+            auth,email,password).then((value)=>{navigate('/dashboard')})
+            .catch((err)=>console.log('Error',err));
+    }
   return (
-    <body class>
     <div className="lg:flex">
         <div className="lg:w-1/2 xl:max-w-screen-sm">
             <div className="py-12 bg-rose-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
@@ -16,7 +30,7 @@ const Login = () => {
                     <form>
                         <div>
                             <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                            <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500" type="" placeholder="mike@gmail.com"/>
+                            <input onChange={(e)=>{setEmail(e.target.value)}} value={email} className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500" type="" placeholder="mike@gmail.com"/>
                         </div>
                         <div className="mt-8">
                             <div className="flex justify-between items-center">
@@ -29,10 +43,10 @@ const Login = () => {
                                     </a>
                                 </div>
                             </div>
-                            <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500" type="" placeholder="Enter your password"/>
+                            <input onChange={(e)=>{setPassword(e.target.value)}} value={password} className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500" type="" placeholder="Enter your password"/>
                         </div>
                         <div className="mt-10">
-                            <button className="bg-rose-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                            <button onClick={loginUser} className="bg-rose-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                             font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-rose-600
                             shadow-lg">
                                 Log In
@@ -40,7 +54,7 @@ const Login = () => {
                         </div>
                     </form>
                     <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                        Don't have an account ? <a href='*' className="cursor-pointer text-rose-600 hover:text-rose-800">Sign up</a>
+                        Don't have an account ? <Link to={'/signup'} className="cursor-pointer text-rose-600 hover:text-rose-800">Sign up</Link>
                     </div>
                 </div>
             </div>
@@ -51,7 +65,6 @@ const Login = () => {
             </div>
         </div>
     </div>
-</body>
 
   )
 }
