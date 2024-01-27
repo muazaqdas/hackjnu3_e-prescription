@@ -548,6 +548,10 @@ h1 {
   --tw-backdrop-sepia:  ;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 body, html{
   overflow-x: hidden !important;
 }
