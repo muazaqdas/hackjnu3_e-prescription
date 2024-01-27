@@ -5,9 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
 @layer base {
-	h1 {
+	/* h1 {
 	  @apply font-roboto text-3xl sm:text-4xl  font-[600];
-	}
+	} */
 	.section-col{
 		@apply flex flex-col w-full justify-center items-center gap-8 text-center
 	}
@@ -21,7 +21,42 @@
 body, html{
 	overflow-x: hidden !important;
 }
-/* Navbar */
+
+/*======================
+    Error 404 page
+=======================*/
+.four_zero_four_bg{
+ 	background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+	background-repeat: no-repeat;
+ }
+
+ /****** Loading *********/
+ .loader {
+	border-top-color: #3498db;
+	-webkit-animation: spinner 1.5s linear infinite;
+	animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/********* Navbar **********/
 .close-menu,
 .open-menu {
   position: absolute;
@@ -148,3 +183,5 @@ body, html{
 		opacity: 0;
 	}
 }
+
+
