@@ -1,6 +1,8 @@
 import {lazy, Suspense} from 'react'
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes,useLocation } from 'react-router-dom';
+import Error404 from './Error404';
+import Home from './Home';
 
 const Layout = lazy( () => import('./components/Layout'));
 
@@ -25,6 +27,8 @@ function App() {
         </div>}>
           <Routes>
             <Route path='/' element={<Layout/>}>
+              <Route index element={<Home/>}/>
+              <Route path="404" element={ <Error404/>} />
             </Route>
             <Route path="*" element={ <Navigate to="/404" replace />} />
           </Routes>
