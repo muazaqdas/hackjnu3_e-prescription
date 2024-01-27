@@ -2,6 +2,7 @@ import {lazy, Suspense} from 'react'
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes,useLocation } from 'react-router-dom';
 import Error404 from './Error404';
+import Dashboard from './Dashboard';
 
 const Layout = lazy( () => import('./components/Layout'));
 const Login = lazy( () => import('./Login'));
@@ -30,6 +31,7 @@ function App() {
               <Route path='/login' element={<Login/>} />
               <Route path='/signup' element={<Signup/>} />
               <Route path="404" element={ <Error404/>} />
+              <Route path="/dashboard" element={ <Dashboard/>} />
             </Route>
             <Route path="*" element={ <Navigate to="/404" replace />} />
           </Routes>
