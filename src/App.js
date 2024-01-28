@@ -1,9 +1,9 @@
-import {lazy, Suspense, useContext} from 'react'
+import {lazy, Suspense} from 'react'
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes,useLocation } from 'react-router-dom';
 import Error404 from './Error404';
 import Dashboard from './Dashboard';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 // import AuthContext, { AuthProvider } from './context/AuthContext';
 
 const Layout = lazy( () => import('./components/Layout'));
