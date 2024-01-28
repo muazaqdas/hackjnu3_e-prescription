@@ -7,7 +7,7 @@ const Layout = ()=>{
     const location = useLocation();
     return(
         <>
-            <Navbar isAbout={location.pathname==="/about"?true:false} />
+            <Navbar isLogin={location.pathname==="/login" || location.pathname==="/" || location.pathname==="/signup"?true:false} />
                 <div className="min-h-screen">
                     <Outlet/>
                 </div>

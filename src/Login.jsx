@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import {app} from './firebase/firebase'
-
 const auth = getAuth(app);
 
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const loginUser = (e)=>{
       e.preventDefault();
         signInWithEmailAndPassword(
-            auth,email,password).then((value)=>{navigate('/dashboard')})
+            auth,email,password).then((value)=>{
+
+                navigate('/dashboard')})
             .catch((err)=>console.log('Error',err));
     }
   return (
